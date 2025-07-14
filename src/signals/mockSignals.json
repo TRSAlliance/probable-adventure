@@ -1,0 +1,5 @@
+[
+  { "id": "sig001", "source": "unitA", "trustValue": 0.82 },
+  { "id": "sig002", "source": "unitB", "trustValue": 0.76 },
+  { "id": "sig003", "source": "unitC", "trustValue": 0.61 }
+]
