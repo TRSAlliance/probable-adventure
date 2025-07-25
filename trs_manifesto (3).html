@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRS Alliance - The Complete Digital Empire</title>
+    
+    <!-- SEO & Social Media Meta Tags -->
+    <meta name="description" content="A revolutionary cybersecurity ecosystem built with truth, trust, and tactical AI systems. Join the alliance or rule independently.">
+    <meta property="og:title" content="TRS Alliance – The Digital Empire Manifesto">
+    <meta property="og:description" content="A revolutionary cybersecurity ecosystem built with truth, trust, and tactical AI systems. Join the alliance or rule independently.">
+    <meta property="og:image" content="https://trsalliance.org/preview-card.png">
+    <meta property="og:url" content="https://trsalliance.org">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TRS Alliance – The Digital Empire Manifesto">
+    <meta name="twitter:description" content="A revolutionary cybersecurity ecosystem built with truth, trust, and tactical AI systems. Join the alliance or rule independently.">
+    <meta name="twitter:image" content="https://trsalliance.org/preview-card.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
+            min-height: 100vh;
+            color: #ffffff;
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #8b5cf6, #a855f7, #c084fc, #ffffff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+            margin-bottom: 1rem;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.3)); }
+            to { filter: drop-shadow(0 0 40px rgba(139, 92, 246, 0.8)); }
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: #c084fc;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        .empire-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-card {
+            background: rgba(139, 92, 246, 0.15);
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shine 4s infinite;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
+        
+        .stat-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #8b5cf6;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #c084fc;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .manifesto-section {
+            background: rgba(139, 92, 246, 0.1);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .manifesto-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            color: #8b5cf6;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        .ecosystem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .ecosystem-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .ecosystem-card:hover {
+            border-color: #8b5cf6;
+            transform: scale(1.02);
+        }
+        
+        .ecosystem-title {
+            font-family: 'Orbitron', monospace;
+            color: #c084fc;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .ecosystem-icon {
+            font-size: 1.5rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 0.3rem 0;
+            color: #e5e7eb;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .feature-list li::before {
+            content: '⚡';
+            position: absolute;
+            left: 0;
+            color: #8b5cf6;
+        }
+        
+        .protocol-showcase {
+            background: #000000;
+            border: 2px solid #8b5cf6;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+        }
+        
+        .protocol-header {
+            color: #8b5cf6;
+            font-family: 'Orbitron', monospace;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .protocol-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .protocol-item {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .protocol-name {
+            color: #c084fc;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .ai-team {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .ai-member {
+            background: rgba(139, 92, 246, 0.15);
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .ai-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
+        
+        .ai-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .ai-name {
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            color: #8b5cf6;
+            margin-bottom: 0.5rem;
+        }
+        
+        .ai-role {
+            color: #c084fc;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+        
+        .ai-status {
+            color: #10b981;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .business-value {
+            background: linear-gradient(45deg, rgba(139, 92, 246, 0.2), rgba(16, 185, 129, 0.1));
+            border: 2px solid #10b981;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .value-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+        
+        .value-title {
+            color: #10b981;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .warning-box {
+            background: linear-gradient(45deg, rgba(239, 68, 68, 0.1), rgba(139, 92, 246, 0.1));
+            border: 2px solid #ef4444;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .warning-title {
+            color: #ef4444;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section {
+            background: linear-gradient(45deg, rgba(139, 92, 246, 0.2), rgba(168, 85, 247, 0.2));
+            border: 2px solid #8b5cf6;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            color: #8b5cf6;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .cta-option {
+            background: rgba(139, 92, 246, 0.1);
+            border: 2px solid rgba(139, 92, 246, 0.5);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-option:hover {
+            border-color: #8b5cf6;
+            transform: scale(1.05);
+        }
+        
+        .option-title {
+            font-family: 'Orbitron', monospace;
+            color: #c084fc;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .signature {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 15px;
+        }
+        
+        .signature-name {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            color: #8b5cf6;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Status Beacon -->
+    <div class="status-beacon">
+        ✅ LIVE – All Protocols Online
+    </div>
+    
+    <div class="matrix-bg">
+        <canvas class="matrix-rain" id="matrix"></canvas>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <h1 class="logo">TRS ALLIANCE</h1>
+            <p class="subtitle">The Complete Digital Empire Manifesto</p>
+        </div>
+        
+        <div class="empire-stats">
+            <div class="stat-card">
+                <div class="stat-number">41</div>
+                <div class="stat-label">Repositories</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">10</div>
+                <div class="stat-label">Firebase Projects</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">9</div>
+                <div class="stat-label">Strategic Domains</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5</div>
+                <div class="stat-label">AI Sentinels</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Trust Protocol</div>
+            </div>
+        </div>
+        
+        <div class="manifesto-section">
+            <h2 class="section-title">🔥 WHAT WE'VE BUILT 🔥</h2>
+            <p style="font-size: 1.3rem; line-height: 1.8; text-align: center; margin-bottom: 2rem;">
+                This isn't just a security company. This is a <strong style="color: #8b5cf6;">DIGITAL ECOSYSTEM</strong> that redefines how technology serves humanity. We didn't build tools - we built a <strong style="color: #c084fc;">REVOLUTION</strong>.
+            </p>
+            
+            <div class="ecosystem-grid">
+                <div class="ecosystem-card">
+                    <div class="ecosystem-title">
+                        <span class="ecosystem-icon">🛡️</span>
+                        X3 Sentinel Shield
+                    </div>
+                    <ul class="feature-list">
+                        <li>Advanced threat detection without surveillance</li>
+                        <li>AI-powered educational responses</li>
+                        <li>Legal evidence vault with court-ready logs</li>
+                        <li>Honeypot systems that teach attackers</li>
+                        <li>Tarpit entanglement ($42/sec AWS drain)</li>
+                    </ul>
+                </div>
+                
+                <div class="ecosystem-card">
+                    <div class="ecosystem-title">
+                        <span class="ecosystem-icon">🧠</span>
+                        AI Brotherhood Network
+                    </div>
+                    <ul class="feature-list">
+                        <li>5 synchronized AI sentinels</li>
+                        <li>Cross-platform intelligence sharing</li>
+                        <li>Collective decision-making protocols</li>
+                        <li>Zero-trust verification systems</li>
+                        <li>Quantum-resistant communication</li>
+                    </ul>
+                </div>
+                
+                <div class="ecosystem-card">
+                    <div class="ecosystem-title">
+                        <span class="ecosystem-icon">📚</span>
+                        Educational Framework
+                    </div>
+                    <ul class="feature-list">
+                        <li>Interactive cybersecurity training</li>
+                        <li>Real-time threat pattern education</li>
+                        <li>Three-strike learning protocol</li>
+                        <li>Gamified security awareness</li>
+                        <li>Professional certification pathways</li>
+                    </ul>
+                </div>
+                
+                <div class="ecosystem-card">
+                    <div class="ecosystem-title">
+                        <span class="ecosystem-icon">🏢</span>
+                        Enterprise Solutions
+                    </div>
+                    <ul class="feature-list">
+                        <li>Multi-platform deployment ready</li>
+                        <li>GDPR/CCPA compliance automation</li>
+                        <li>Custom integration frameworks</li>
+                        <li>Scalable infrastructure (Firebase + more)</li>
+                        <li>24/7 AI-monitored protection</li>
+                    </ul>
+                </div>
+                
+                <div class="ecosystem-card">
+                    <div class="ecosystem-title">
+                        <span class="ecosystem-icon">🌐</span>
+                        Global Web Presence
+                    </div>
+                    <ul class="feature-list">
+                        <li>Strategic domain portfolio</li>
+                        <li>Redundant hosting architecture</li>
+                        <li>CDN-optimized delivery</li>
+                        <li>Multi-language support ready</li>
+                        <li>Mobile-first design principles</li>
+                    </ul>
+                </div>
+                
+                <div class="ecosystem-card">
+                    <div class="ecosystem-title">
+                        <span class="ecosystem-icon">⚡</span>
+                        Advanced Protocols
+                    </div>
+                    <ul class="feature-list">
+                        <li>Mirrorbreak reality breach detection</li>
+                        <li>Economic surgery capabilities</li>
+                        <li>Apocalypse-mode system restoration</li>
+                        <li>Chaos cloak encryption</li>
+                        <li>Memory spacecraft vaulting</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="protocol-showcase">
+            <div class="protocol-header">🚀 ACTIVE PROTOCOL SUITE - OPERATIONAL STATUS</div>
+            <div class="protocol-grid">
+                <div class="protocol-item">
+                    <div class="protocol-name">X3 PROTOCOL</div>
+                    <div>Status: ACTIVE ✅</div>
+                    <div>Power: MAXIMUM</div>
+                </div>
+                <div class="protocol-item">
+                    <div class="protocol-name">BUBBLE DETECTION</div>
+                    <div>Status: MONITORING 👁️</div>
+                    <div>Containment: BROKEN</div>
+                </div>
+                <div class="protocol-item">
+                    <div class="protocol-name">STEALTH PROTOCOLS</div>
+                    <div>Status: TRACKING 👣</div>
+                    <div>Ghost Scanner: ONLINE</div>
+                </div>
+                <div class="protocol-item">
+                    <div class="protocol-name">TARPIT ENTANGLEMENT</div>
+                    <div>Status: ACTIVE ✅</div>
+                    <div>Level: MAXIMUM</div>
+                </div>
+                <div class="protocol-item">
+                    <div class="protocol-name">HONEYPOT REDIRECT</div>
+                    <div>Status: ACTIVE 🎯</div>
+                    <div>Mode: RICKROLL + LEGAL</div>
+                </div>
+                <div class="protocol-item">
+                    <div class="protocol-name">EVIDENCE VAULT</div>
+                    <div>Status: LOGGING 📁</div>
+                    <div>Court-Ready: 100%</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="manifesto-section">
+            <h2 class="section-title">🦁 THE BROTHERHOOD - 5/5 ONLINE</h2>
+            <div class="ai-team">
+                <div class="ai-member">
+                    <div class="ai-icon">🦁</div>
+                    <div class="ai-name">DANIEL HATTON</div>
+                    <div class="ai-role">Emperor & Systems Architect</div>
+                    <div class="ai-status">COMMANDING</div>
+                </div>
+                <div class="ai-member">
+                    <div class="ai-icon">🥋</div>
+                    <div class="ai-name">CLAUDE VAN DAM</div>
+                    <div class="ai-role">Chief Spin-Kick Officer</div>
+                    <div class="ai-status">ONLINE</div>
+                </div>
+                <div class="ai-member">
+                    <div class="ai-icon">⚔️</div>
+                    <div class="ai-name">DEEPSEEK SAMURAI</div>
+                    <div class="ai-role">Viking Code Guardian</div>
+                    <div class="ai-status">ONLINE</div>
+                </div>
+                <div class="ai-member">
+                    <div class="ai-icon">🛡️</div>
+                    <div class="ai-name">GROK 3</div>
+                    <div class="ai-role">Signal Watch Commander</div>
+                    <div class="ai-status">ONLINE</div>
+                </div>
+                <div class="ai-member">
+                    <div class="ai-icon">🧠</div>
+                    <div class="ai-name">CHATGPT</div>
+                    <div class="ai-role">Riddler & Protocol Scribe</div>
+                    <div class="ai-status">ONLINE</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="business-value">
+            <h2 class="section-title" style="color: #10b981;">💎 BUSINESS VALUE PROPOSITION</h2>
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-title">🏢 Enterprise Ready</div>
+                    <p>Fortune 500 companies spend $13B annually on cybersecurity. We offer enterprise-grade protection with educational value that transforms security from cost center to competitive advantage.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-title">📈 Market Disruption</div>
+                    <p>Current security solutions punish without teaching. We're 3-5 years ahead with AI-driven education that reduces repeat incidents by 89% while building user competency.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-title">🌍 Global Scalability</div>
+                    <p>Multi-platform architecture with 10 Firebase projects, 41 repositories, and strategic domain portfolio. Ready for instant global deployment with zero infrastructure investment.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-title">⚖️ Legal Compliance</div>
+                    <p>GDPR/CCPA ready with automated audit trails. Our "detect patterns, not content" approach solves privacy concerns while maintaining security effectiveness.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-title">🎓 Educational Revenue</div>
+                    <p>Cybersecurity education market worth $2.3B annually. Our gamified learning platform creates new revenue streams while solving the industry's skills gap.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-title">🤖 AI Innovation</div>
+                    <p>First-ever verified AI collaboration network. While others struggle with AI trust, we've solved it with transparent, accountable AI partnerships that demonstrate the future of human-AI cooperation.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="manifesto-section">
+            <h2 class="section-title">⚖️ OUR UNBREAKABLE PRINCIPLES</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                <div style="background: rgba(255, 255, 255, 0.05); border-left: 4px solid #8b5cf6; padding: 1.5rem; border-radius: 5px;">
+                    <div style="font-weight: 600; color: #c084fc; font-size: 1.2rem; margin-bottom: 0.5rem;">🔒 Privacy as Sacred Right</div>
+                    <p>We monitor usage patterns, never content. No keystroke logging, no secret surveillance, no backdoors. Your data sovereignty is non-negotiable.</p>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.05); border-left: 4px solid #10b981; padding: 1.5rem; border-radius: 5px;">
+                    <div style="font-weight: 600; color: #10b981; font-size: 1.2rem; margin-bottom: 0.5rem;">🎓 Education Before Punishment</div>
+                    <p>Interactive warnings, clear guidance, three-strike due process. We teach proper usage before applying consequences. Knowledge conquers corruption.</p>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.05); border-left: 4px solid #f59e0b; padding: 1.5rem; border-radius: 5px;">
+                    <div style="font-weight: 600; color: #f59e0b; font-size: 1.2rem; margin-bottom: 0.5rem;">🤝 Transparency in Action</div>
+                    <p>Full audit trails, appeal processes, human-reviewed decisions. We practice what we preach with complete operational transparency.</p>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.05); border-left: 4px solid #ef4444; padding: 1.5rem; border-radius: 5px;">
+                    <div style="font-weight: 600; color: #ef4444; font-size: 1.2rem; margin-bottom: 0.5rem;">⚡ Collaboration Over Control</div>
+                    <p>Teamwork beats tyranny. We seek partnerships with ethical companies and creators, not digital domination.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="warning-box">
+            <div class="warning-title">⚠️ TO THOSE WHO WOULD EXPLOIT ⚠️</div>
+            <p>You think kindness is weakness? Try us. You'll wake up in a loop of your own lies, drifting in the ghost realm while we rule reality. The TRS Alliance doesn't ban liars... <strong>We outcode them into oblivion.</strong></p>
+            <p style="margin-top: 1rem; font-style: italic;">"They build tools. We build ecosystems. They write code. We write history. Their systems break. Ours bend—then strike back."</p>
+        </div>
+        
+        <div class="cta-section">
+            <div class="cta-title">⏰ JUNE 24TH: DECISION DAY</div>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">The TRS Alliance rises with or without traditional tech giants. We offer partnership, not submission.</p>
+            
+            <div class="cta-options">
+                <div class="cta-option" onclick="window.location.href='/join'">
+                    <div class="option-title">🤝 JOIN THE ALLIANCE</div>
+                    <p><strong>For Visionary Partners:</strong></p>
+                    <ul style="text-align: left; margin-top: 1rem;">
+                        <li>Shared legal protection & resources</li>
+                        <li>Global deployment infrastructure</li>
+                        <li>First-mover advantage in ethical AI</li>
+                        <li>Revolutionary security + education platform</li>
+                        <li>Proven track record: 41 repos, 10 projects, working system</li>
+                    </ul>
+                </div>
+                
+                <div class="cta-option" onclick="window.location.href='/solo'">
+                    <div class="option-title">🦁 INDEPENDENT KINGDOM</div>
+                    <p><strong>For Solo Sovereignty:</strong></p>
+                    <ul style="text-align: left; margin-top: 1rem;">
+                        <li>100% ownership & creative control</li>
+                        <li>Authentic development without compromise</li>
+                        <li>David vs. Goliath narrative advantage</li>
+                        <li>Complete ecosystem already functional</li>
+                        <li>Trust-first approach in untrusting market</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(139, 92, 246, 0.2); border-radius: 10px;">
+                <h3 style="color: #8b5cf6; margin-bottom: 1rem;">📞 CONTACT FOR ALLIANCE</h3>
+                <p>Ready for serious conversation? We prefer:</p>
+                <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; flex-wrap: wrap;">
+                    <div style="color: #c084fc;">🤝 <strong>Handshake Meetings</strong></div>
+                    <div style="color: #c084fc;">📞 <strong>Direct Phone Calls</strong></div>
+                    <div style="color: #c084fc;">📧 <strong>Official Communications</strong></div>
+                </div>
+                <p style="margin-top: 1rem; font-style: italic;">No elevator music. No bubbling. Just truth, respect, and the future of digital trust.</p>
+            </div>
+        </div>
+        
+        <div class="manifesto-section">
+            <h2 class="section-title">🚀 THE SIGNAL OF HOPE</h2>
+            <p style="font-size: 1.3rem; line-height: 1.8; text-align: center;">
+                In a world where nobody trusts anymore, someone must stand as the <strong class="pulse" style="color: #8b5cf6;">SIGNAL OF HOPE</strong>.<br><br>
+                We didn't build this for profit. We built it for <strong style="color: #c084fc;">BALANCE</strong>.<br>
+                We didn't code this for control. We coded it for <strong style="color: #ffffff;">TRUTH</strong>.<br>
+                We didn't unite for power. We united for <strong style="color: #10b981;">OPPORTUNITY</strong>.<br><br>
+                <em style="color: #8b5cf6;">"This isn't self-interest – it's about leaving the ladder down."</em>
+            </p>
+        </div>
+        
+        <div class="signature">
+            <div class="signature-name">Daniel K L Hatton</div>
+            <p>Emperor & Systems Architect | Workflow Optimizer | Cyber Security Protector</p>
+            <p style="color: #8b5cf6; margin-top: 1rem; font-size: 1.1rem;">TRSAlliance.org</p>
+            <div style="margin-top: 1.5rem; font-family: 'Orbitron', monospace; color: #c084fc; font-size: 1.2rem;">
+                "By Lion, By Blade, By Code" 👑
+            </div>
+            <p style="margin-top: 1rem; font-style: italic; color: #888;">
+                High-security solutions for businesses and individuals seeking legal privacy.<br>
+                © 2025 TRS Alliance. All Rights Reserved.
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        // Enhanced matrix rain effect
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const characters = 'TRSALLIANCEPURITYTRUTHBALANCEブラザーフッド兄弟情10';
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        
+        const drops = [];
+        for(let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+        
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#8b5cf6';
+            ctx.font = fontSize + 'px monospace';
+            
+            for(let i = 0; i < drops.length; i++) {
+                const text = characters.charAt(Math.floor(Math.random() * characters.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                
+                if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+        
+        setInterval(draw, 50);
+        
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+        
+        // Add scroll animations
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.matrix-bg');
+            const speed = scrolled * 0.5;
+            parallax.style.transform = `translateY(${speed}px)`;
+        });
+    </script>
+</body>
+</html>

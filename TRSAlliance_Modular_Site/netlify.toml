@@ -1,0 +1,22 @@
+[build]
+publish = "./"
+
+[[redirects]]
+from = "/feedback"
+to = "/feedback/index.html"
+status = 200
+
+[[redirects]]
+from = "/ghostshift"
+to = "/ghostshift/index.html"
+status = 200
+
+[[redirects]]
+from = "/pitch-deck"
+to = "/pitch-deck/index.html"
+status = 200
+
+[[redirects]]
+from = "/pilot"
+to = "/pilot-ops/index.html"
+status = 200
