@@ -76,8 +76,8 @@ jobs:
             --forbidden-ops "code_generation,nlp" \
             --boundary-strict
           
-          # Test Dolphin boundaries
-          trs-cli ai-test --model dolphin \
+          # Test chatgpt boundaries
+          trs-cli ai-test --model chatgpt \
             --allowed-ops "nlp,conversation" \
             --forbidden-ops "code_generation,data_processing" \
             --boundary-strict
@@ -231,7 +231,7 @@ jobs:
   # ====================================
   # DOLPHIN NLP DEPLOYMENT
   # ====================================
-  dolphin-deployment:
+  chatgpt-deployment:
     needs: [claude-verification, grok-deployment]
     runs-on: ubuntu-latest
     environment: fortress
@@ -239,20 +239,20 @@ jobs:
     steps:
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
       
-      # Dolphin NLP with Boundaries
+      # chatgpt NLP with Boundaries
       - name: Deploy Dolphin NLP Processing
         run: |
-          echo "🐬 Deploying Dolphin with NLP boundaries..."
+          echo " Deploying chatgpt with NLP boundaries..."
           
-          # Initialize Dolphin with NLP boundaries
-          trs-cli ai-deploy --model dolphin \
+          # Initialize chatgpt with NLP boundaries
+          trs-cli ai-deploy --model chatgpt \
             --execution-boundary "nlp,conversation" \
             --trs-token-binding \
             --context-window 8000 \
             --safety-filters enabled
           
           # Test conversation boundaries
-          trs-cli ai-test --model dolphin \
+          trs-cli ai-test --model chatgpt \
             --test-conversation-safety \
             --boundary-enforcement
           
@@ -271,13 +271,13 @@ jobs:
               }
             }'
           
-          echo "✅ Dolphin deployment complete"
+          echo "✅ chatgpt deployment complete"
 
   # ====================================
   # MULTI-AI COLLABORATION FRAMEWORK
   # ====================================
   multi-ai-coordination:
-    needs: [claude-verification, grok-deployment, deepseek-deployment, dolphin-deployment]
+    needs: [claude-verification, grok-deployment, deepseek-deployment, chatgpt-deployment]
     runs-on: ubuntu-latest
     environment: fortress
     
@@ -291,7 +291,7 @@ jobs:
           
           # Create AI coordination matrix
           trs-cli multi-ai --initialize \
-            --models "claude,grok,deepseek,dolphin" \
+            --models "claude,grok,deepseek,chatgpt" \
             --coordination-protocol "TRS-15" \
             --boundary-enforcement strict \
             --token-sharing enabled
@@ -301,7 +301,7 @@ jobs:
             --claude-role "verification,coordination" \
             --grok-role "data_processing,insights" \
             --deepseek-role "code_generation,analysis" \
-            --dolphin-role "nlp,conversation"
+            --chatgpt-role "nlp,conversation"
           
           echo "✅ Multi-AI framework initialized"
           
@@ -313,7 +313,7 @@ jobs:
           # Test coordinated task execution
           trs-cli multi-ai --test-collaboration \
             --task "analyze_and_generate" \
-            --ai-sequence "grok->deepseek->dolphin" \
+            --ai-sequence "grok->deepseek->chatgpt" \
             --verification-ai "claude" \
             --max-execution-time 300
           
@@ -369,7 +369,7 @@ jobs:
           
           # Setup monitoring for all AI models
           trs-cli monitor --setup \
-            --models "claude,grok,deepseek,dolphin" \
+            --models "claude,grok,deepseek,chatgpt" \
             --alert-threshold 95 \
             --auto-remediation enabled \
             --supabase-logging
