@@ -1,1 +1,90 @@
-<h2>Live Job Tracker</h2><p>Real-time visibility system coming soon.</p>
+// components/GhostWorkersList.tsx
+import React from 'react';
+import { useGhostWorkers } from '../hooks/useGhostWorkers';
+
+// Define the structure of the worker data returned by the API
+interface Worker {
+  id: string;
+  name: string;
+  email: string;
+  total_tickets: number;
+  closed_tickets: number;
+  last_assigned_date: string; // Date represented as a string
+  completion_rate: number;
+}
+
+const GhostWorkersList: React.FC = () => {
+  // 1. Use the custom hook to fetch data
+  const { ghostWorkers, count, isLoading, isError, refresh } = useGhostWorkers();
+
+  // Helper function to format the completion rate
+  const formatRate = (rate: number) => (rate * 100).toFixed(0) + '%';
+  
+  // Helper function to format the last assigned date
+  const formatDate = (dateString: string) => {
+    if (!dateString) return 'N/A';
+    return new Date(dateString).toLocaleDateString();
+  };
+
+
+  // 2. Handle loading and error states
+  if (isError) {
+    return (
+      <div className="alert alert-danger">
+        🚨 **Error loading Ghost Workers.** Please try refreshing.
+      </div>
+    );
+  }
+
+  if (isLoading) {
+    return <div>⏳ Loading reliable workers...</div>;
+  }
+  
+  // 3. Render the data
+  return (
+    <div className="ghost-workers-container">
+      <h3>
+        Overlooked High-Performers ({count})
+      </h3>
+      <p>
+        These **{count} workers** have a high completion rate but haven't been assigned a ticket in over 6 months.
+      </p>
+      <button onClick={refresh} className="btn btn-sm btn-secondary mb-3">
+        Refresh Data
+      </button>
+
+      {count === 0 ? (
+        <div className="alert alert-success">
+          ✨ All high-performing workers are currently engaged!
+        </div>
+      ) : (
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Completion Rate</th>
+              <th>Total Tickets</th>
+              <th>Last Assigned</th>
+            </tr>
+          </thead>
+          <tbody>
+            {ghostWorkers.map((worker: Worker) => (
+              <tr key={worker.id}>
+                <td>**{worker.name || 'Anonymous'}**</td>
+                <td>
+                  <span className="badge bg-success">
+                    {formatRate(worker.completion_rate)}
+                  </span>
+                </td>
+                <td>{worker.total_tickets}</td>
+                <td>{formatDate(worker.last_assigned_date)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </div>
+  );
+};
+
+export default GhostWorkersList;
