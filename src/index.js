@@ -1,5 +1,6 @@
-// src/index.js
-import { runSignalSimulation } from './sentinel/simulator.js';
-
-console.log('🔧 TRS Signal Sandbox Bootstrapped');
-runSignalSimulation();
+import { simulateGhostDrift } from '../logic/ghostDrift.js';
+import mockSignals from '../signals/mockSignals.json' assert { type: 'json' };
+export function runSignalSimulation() {
+  const processed = mockSignals.map(signal => simulateGhostDrift(signal));
+  console.table(processed);
+}
