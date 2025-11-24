@@ -1,6 +1,7 @@
 {
-  "name": "ghostshift-tracker",
+  "name": "trs-sentinel-core",
   "version": "2.4.1",
+  "description": "TRS Sentinel Core - Production truth engine",
   "type": "module",
   "scripts": {
     "sentinel": "node src/sentinel/simulator.js",
