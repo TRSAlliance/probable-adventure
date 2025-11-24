@@ -1,10 +1,9 @@
 {
   "name": "trs-ghostshift-processor",
-  "version": "1.0.0", 
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "process": "node src/processor.js",
-    "test": "node src/processor.js --test"
+    "process": "node src/processor.js"
   },
   "dependencies": {
     "commander": "^11.0.0"
