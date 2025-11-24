@@ -1,70 +1,71 @@
-// src/sentinel/simulator.js
-// LIVE VERSION – this is no longer a mock. This is Node 001’s brain.
-
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { createClient } from '@supabase/supabase-js';
 import { simulateGhostDrift } from '../logic/ghostDrift.js';
 
-// Live Supabase – use your real anon key (read/write allowed via RLS)
 const supabase = createClient(
-  'https://your-project.supabase.co',           // ← put real URL
-  'public-anon-key-here'                        // ← anon key is fine
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_ANON_KEY
 );
 
-let isRunning = false;
-
 export async function startLiveSentinel() {
-  if (isRunning) return;
-  isRunning = true;
+  console.log('🛡️ TRS Sentinel starting...');
+  
+  const { data: newSignals, error } = await supabase
+    .from('ghostshifts')
+    .select('*')
+    .is('trustScore', null)
+    .limit(10);
 
-  console.log('Sentinel LIVE – listening for new shifts...');
+  if (error) {
+    console.error('Database error:', error);
+    return;
+  }
 
-  const channel = supabase
-    .channel('ghostshifts')
-    .on('postgres_changes', 
-      { event: 'INSERT', schema: 'public', table: 'ghostshifts' },
-      async (payload) => {
-        const newShift = payload.new;
-        console.log('New shift detected:', newShift.id);
+  console.log(`Found ${newSignals.length} unprocessed signals`);
 
-        // THIS is where Truth meets Respect meets System
-        const driftResult = simulateGhostDrift(newShift);
-
-        // Auto-verify based on ghostDrift confidence
-        const verified = driftResult.trustScore >= 82;   // tunable threshold
-        const verificationNote = verified 
-          ? 'Sentinel auto-verified' 
-          : `Flagged for review (score: ${driftResult.trustScore})`;
-
-        // Write verdict back – this instantly updates the live map
-        const { error } = await supabase
-          .from('ghostshifts')
-          .update({
-            verified: verified ? 1 : -1,
-            trust_score: driftResult.trustScore,
-            sentinel_note: verificationNote,
-            processed_at: new Date().toISOString()
-          })
-          .eq('id', newShift.id);
-
-        if (error) console.error('Sentinel update failed:', error);
-        else console.log(`Shift ${newShift.id} → ${verified ? 'VERIFIED' : 'FLAGGED'}`);
-      }
-    )
-    .subscribe();
-
-  console.log('Sentinel is now LIVE on all new submissions.');
-}
-
-// Optional: one-off run on historical data
-export async function reprocessAll() {
-  const { data } = await supabase.from('ghostshifts').select('*').eq('verified', 0);
-  for (const shift of data) {
-    // force re-run ghostDrift logic
-    const result = simulateGhostDrift(shift);
+  for (const signal of newSignals) {
+    const result = simulateGhostDrift(signal);
+    
     await supabase
       .from('ghostshifts')
-      .update({ verified: result.trustScore >= 82 ? 1 : -1, trust_score: result.trustScore })
-      .eq('id', shift.id);
+      .update({ trustScore: result.trustScore })
+      .eq('id', signal.id);
+
+    console.log(`Processed ${signal.id}: ${result.trustScore} trust`);
   }
-  console.log('Historical reprocessing complete.');
+
+  console.log(`✅ Processed ${newSignals.length} signals`);
+}
+
+export async function reprocessAll() {
+  console.log('🔄 Reprocessing all signals...');
+  
+  const { data: allSignals, error } = await supabase
+    .from('ghostshifts')
+    .select('*');
+
+  if (error) {
+    console.error('Database error:', error);
+    return;
+  }
+
+  let processed = 0;
+  for (const signal of allSignals) {
+    const result = simulateGhostDrift(signal);
+    
+    await supabase
+      .from('ghostshifts')
+      .update({ trustScore: result.trustScore })
+      .eq('id', signal.id);
+
+    processed++;
+  }
+
+  console.log(`✅ Reprocessed ${processed} signals`);
+}
+
+// Handle command line
+if (process.argv.includes('--reprocess')) {
+  reprocessAll();
+} else {
+  startLiveSentinel();
 }
