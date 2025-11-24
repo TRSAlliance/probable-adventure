@@ -1,0 +1,10 @@
+[
+  {
+    "id": "test-123",
+    "role": "full-time",
+    "location": "SF",
+    "when": "last-week",
+    "displacement": ["ai-replace"],
+    "landed": "looking"
+  }
+]
