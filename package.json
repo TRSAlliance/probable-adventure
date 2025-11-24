@@ -1,21 +1,11 @@
 {
   "name": "trs-probable-adventure",
-  "version": "2.3.1",
-  "description": "Experimental TRS logic sandbox for signal tracing and emergent ops.",
-  "main": "src/index.js",
+  "version": "1.0.0",
+  "description": "Live TRS-15 sentinel. 34 lines total. Real signals only.",
+  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "deploy": "node deploy.js"
-  },
-  "dependencies": {
-    "@trs-alliance/core": "^2.4.0",
-    "sentinel-protocol": "github:TRSAlliance/sentinel-core#v2.3"
-  },
-  "devDependencies": {
-    "vite": "^5.2.0",
-    "eslint": "^8.56.0"
+    "sentinel": "deno run --allow-net --allow-env src/sentinel/simulator.js",
+    "reprocess": "deno run --allow-net --allow-env - <<'DENO' import { reprocessAll } from './src/sentinel/simulator.js'; await reprocessAll(); DENO"
   },
   "author": "TRSAlliance",
   "license": "MIT"
