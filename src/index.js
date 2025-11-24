@@ -1,6 +1,7 @@
-import { simulateGhostDrift } from '../logic/ghostDrift.js';
-import mockSignals from '../signals/mockSignals.json' assert { type: 'json' };
-export function runSignalSimulation() {
-  const processed = mockSignals.map(signal => simulateGhostDrift(signal));
-  console.table(processed);
-}
+// src/index.js
+// One job: start the sentinel and keep it alive
+import { startLiveSentinel } from './sentinel/simulator.js';
+
+console.log('Node 001 booting...');
+await startLiveSentinel();
+console.log('Sentinel running. Processing all new shifts in real time.');
