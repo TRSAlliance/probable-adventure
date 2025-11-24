@@ -1,13 +1,11 @@
-name: TRS Sentinel Live
+name: 🛡️ TRS Sentinel Live
 
 on:
   push:
-    paths:
-      - 'src/logic/ghostDrift.js'
-      - 'src/sentinel/simulator.js'
-      - 'src/index.js'
+    branches: [main]
   schedule:
-    - cron: '0 */6 * * *'   # every 6 hours
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
 
 jobs:
   run-sentinel:
@@ -15,21 +13,23 @@ jobs:
     env:
       SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
       SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+    
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Set up Deno
-        uses: denoland/setup-deno@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          deno-version: v1.x
+          node-version: '18'
+          cache: 'npm'
 
-      - name: Run live sentinel (real signals)
-        run: deno run --allow-net --allow-env src/sentinel/simulator.js
+      - name: Install dependencies
+        run: npm install
 
-      - name: Reprocess any stuck rows (scheduled only)
+      - name: Run Sentinel
+        run: node src/sentinel/simulator.js
+
+      - name: Reprocess historical data
         if: github.event_name == 'schedule'
-        run: deno run --allow-net --allow-env - <<'DENO'
-          import { reprocessAll } from './src/sentinel/simulator.js';
-          await reprocessAll();
-          console.log('Historical reprocess complete');
-        DENO
+        run: node src/sentinel/simulator.js --reprocess
