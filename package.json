@@ -1,13 +1,12 @@
 {
-  "name": "trs-sentinel-core",
-  "version": "2.4.1",
-  "description": "TRS Sentinel Core - Production truth engine",
+  "name": "trs-ghostshift-processor",
+  "version": "1.0.0", 
   "type": "module",
   "scripts": {
-    "sentinel": "node src/sentinel/simulator.js",
-    "reprocess": "node src/sentinel/simulator.js --reprocess"
+    "process": "node src/processor.js",
+    "test": "node src/processor.js --test"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.38.0"
+    "commander": "^11.0.0"
   }
 }
