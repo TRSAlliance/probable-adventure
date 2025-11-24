@@ -1,11 +1,12 @@
-# probable-adventure
-# TRS Signal Sandbox
+# TRS Sentinel Core
 
-> Experimental space for simulating TRS signal drift, Sentinel boundary enforcement, and trust state volatility.
+Production truth engine for tracking workforce displacement.
 
-### Modules Included:
-- `ghostDrift.js`: Mutates signal trust values to simulate ethical ambiguity or situational flux.
-- `simulator.js`: Mimics TRS-15 Sentinel reaction to signal anomalies.
-- `mockSignals.json`: Test input for simulation scenarios.
+## Architecture
+- `src/logic/ghostDrift.js` - Trust scoring algorithm (9 lines)
+- `src/sentinel/simulator.js` - Signal processor (25 lines) 
+- GitHub Actions - Automated processing every 6 hours
+- Supabase - Production database
 
-> Do not use for production – this is an exploration layer.
+## Status
+**PRODUCTION** - Live system processing workforce displacement data.
