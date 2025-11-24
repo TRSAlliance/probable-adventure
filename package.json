@@ -1,12 +1,12 @@
 {
-  "name": "trs-probable-adventure",
-  "version": "1.0.0",
-  "description": "Live TRS-15 sentinel. 34 lines total. Real signals only.",
+  "name": "ghostshift-tracker",
+  "version": "2.4.1",
   "type": "module",
   "scripts": {
-    "sentinel": "deno run --allow-net --allow-env src/sentinel/simulator.js",
-    "reprocess": "deno run --allow-net --allow-env - <<'DENO' import { reprocessAll } from './src/sentinel/simulator.js'; await reprocessAll(); DENO"
+    "sentinel": "node src/sentinel/simulator.js",
+    "reprocess": "node src/sentinel/simulator.js --reprocess"
   },
-  "author": "TRSAlliance",
-  "license": "MIT"
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.0"
+  }
 }
