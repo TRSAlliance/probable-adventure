@@ -1,0 +1,14 @@
+name: Health Check (Temporary)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  noop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mark as successful
+        run: echo "TRS Temporary Health Check — No operations performed."
